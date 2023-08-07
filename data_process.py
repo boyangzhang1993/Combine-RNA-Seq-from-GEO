@@ -6,7 +6,7 @@ from utility import name_extract, check_genes_name_consistent, download_and_deco
 
 # Constant (see Assumptions for description)
 DOWNLOAD_URL = "https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE223695&format=file"  # Download URL
-RNA_FILE_PATH = Path('./RNA_Raw/GSE223695_RAW')
+RNA_FILE_PATH = Path('./RNA_Raw/GSE223695_RAW') # File save path
 
 PATTERN = r'_quant\.tar$'
 GE_FILE ='quant.sf'
@@ -42,14 +42,13 @@ if __name__ == "__main__":
     data_dict = {}
     # List to store gene names from each file
     all_gene_names = {}
+    # Create a temporary directory for extraction
+    temp_dir = RNA_FILE_PATH.parent / 'decompressed'
+    temp_dir.mkdir(exist_ok=True)
 
     for gz_file in RNA_FILE_PATH.glob('*.tar.gz'):
         if gz_file.name.startswith("._"):
             continue
-        # Create a temporary directory for extraction
-        temp_dir = RNA_FILE_PATH.parent / 'decompressed'
-        temp_dir.mkdir(exist_ok=True)
-
         # Extract the tar.gz file into the temporary directory
         with tarfile.open(gz_file, 'r:gz') as archive:
             archive.extractall(path=temp_dir)
@@ -76,7 +75,7 @@ if __name__ == "__main__":
     print(combined_df)
     # Remove temporary directory after processing
     shutil.rmtree(temp_dir)
-    # Convert dictionary to DataFrame
+    # Convert DataFrame to CSV
     combined_df.to_csv('Combined_RNA_TPM(from_Salmon).csv', index=True)
 
 
