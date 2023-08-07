@@ -1,4 +1,9 @@
-# Combine-RNA-Seq-from-GEO
+# Combine RNA-Seq data from GEO Database
+
+Run bash:
+chmod +x run_scripts.sh
+./run_scripts.sh
+
 Inputs:
 1. Download url
 2. File saving path 
@@ -18,7 +23,3 @@ Combined_RNA_TPM(from_Salmon).csv
 1. genes (rows) by samples (columns) containing the RNA-Seq read counts (TPM)
 2. Please note the RNA data were already processed using Salmon as stated in https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE223695
 
-
-Run bash:
-chmod +x run_scripts.sh
-./run_scripts.sh
