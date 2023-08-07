@@ -10,6 +10,7 @@ RNA_FILE_PATH = Path('./RNA_Raw/GSE223695_RAW')
 
 PATTERN = r'_quant\.tar$'
 GE_FILE ='quant.sf'
+GE_SPILT = '\t'
 TPM_ID = 'TPM'
 RE_CHECK = True
 
@@ -58,7 +59,7 @@ if __name__ == "__main__":
 
         if quant_path.exists() and sample_name:
             # Read the TPM column from the quant.sf file
-            df = pd.read_csv(quant_path, sep='\t', usecols=['Name', TPM_ID])
+            df = pd.read_csv(quant_path, sep=GE_SPILT, usecols=['Name', TPM_ID])
             # Add to dictionary
             data_dict[sample_name] = df.set_index('Name')[TPM_ID]
             # Save the gene names in the all_gene_names dictionary
