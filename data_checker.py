@@ -2,7 +2,7 @@ import tarfile
 from pathlib import Path
 import pandas as pd
 from data_process import GE_FILE, TPM_ID
-from utility import name_match
+from utility import name_extract
 
 RNA_FILE_PATH = Path('./RNA_Raw/GSE223695_RAW')
 if __name__ == "__main__":
@@ -27,7 +27,7 @@ if __name__ == "__main__":
         # Extract the tar.gz file into the temporary directory
         with tarfile.open(matching_path, 'r:gz') as archive:
             archive.extractall(path=temp_dir)
-        id_file, sample_name = name_match(matching_path)
+        id_file, sample_name = name_extract(matching_path)
         # Now, read the "quant.sf" from the temporary directory
         quant_path = temp_dir / id_file / GE_FILE
 

@@ -2,7 +2,7 @@ import shutil
 from pathlib import Path
 import pandas as pd
 import tarfile
-from utility import name_match, check_genes_name_consistent, download_and_decompress
+from utility import name_extract, check_genes_name_consistent, download_and_decompress
 
 # Constant (see Assumptions for description)
 DOWNLOAD_URL = "https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE223695&format=file"  # Download URL
@@ -53,7 +53,7 @@ if __name__ == "__main__":
         # Extract the tar.gz file into the temporary directory
         with tarfile.open(gz_file, 'r:gz') as archive:
             archive.extractall(path=temp_dir)
-        id_file, sample_name = name_match(gz_file)
+        id_file, sample_name = name_extract(gz_file)
         # Now, read the "quant.sf" from the temporary directory
         quant_path = temp_dir / id_file / GE_FILE
 

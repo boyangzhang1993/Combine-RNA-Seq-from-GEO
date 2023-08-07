@@ -6,7 +6,7 @@ from pathlib import Path
 import requests
 
 
-def name_match(gz_file: Path) -> (str, str):
+def name_extract(gz_file: Path) -> (str, str):
     id_match = re.search(r'([^_]+)_quant\.tar$', gz_file.stem)
     sample_match = re.search(r"(GSM\d+)", gz_file.stem)
     if id_match:
