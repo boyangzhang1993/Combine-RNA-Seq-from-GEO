@@ -12,6 +12,7 @@ chmod +x run_scripts.sh
 1. "GSM" is used as a prefix of the sample name. 
 2. Additional experiment identifiers are following the "GSM" such as "B9053" and "WT-HSC-TET2-HM-DIR"
 3. "TPM" is the gene expression data which is recorded in 'quant.sf'
+4. The 'quant.sf' use '\t' as spliter. 
 
 ## Auto checks (derisk):
 1. Check for gene names are consistent across files
