@@ -1,4 +1,4 @@
-# Combine RNA-Seq data from GEO Database
+# Combine RNA-Seq Data from GEO Database
 ## Run bash:
 chmod +x run_scripts.sh
 
