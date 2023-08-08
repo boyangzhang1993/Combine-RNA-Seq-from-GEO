@@ -3,7 +3,6 @@ from pathlib import Path
 import tempfile
 import pandas as pd
 from data_process import TRANSCRIPT_OUTPUT
-
 from utility import custom_aggregator
 
 
@@ -11,7 +10,7 @@ from utility import custom_aggregator
 # Path for files
 BIOMART_PATH = Path("./mapping/biomart_results/mart_human.txt.gz")
 TRANSCRIPT_PATH = Path(f"./{TRANSCRIPT_OUTPUT}")
-MAPPING_OUT = "merged_output"
+MAPPING_OUT = "mapping"
 # Constants for accessing column names
 CONFIDENCE_LOW_HIGH = 'Human orthology confidence [0 low, 1 high]'
 JOIN_METHOD = "left"
@@ -64,4 +63,4 @@ with tempfile.TemporaryDirectory() as temp_dir:
 
     merged_df.to_csv(f"./{MAPPING_OUT}.csv", index=False)
     filtered_df[cols_keep_filter].to_csv(f"./{MAPPING_OUT+'_filtered'}.csv", index=False)
-    aggregated_df[cols_keep_aggregated].to_csv(f"./{MAPPING_OUT + '_filtered_aggregated'}.csv", index=False)
+    aggregated_df[cols_keep_aggregated].to_csv(f"./{MAPPING_OUT + '_aggregated'}.csv", index=False)

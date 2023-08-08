@@ -29,4 +29,5 @@ chmod +x run_scripts.sh
 Combined_RNA_TPM(from_Salmon).csv
 1. Genes (rows) by samples (columns) containing the RNA-Seq read counts (TPM).
 2. Please note the RNA data were already processed using Salmon as stated in https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE223695.
-
+3. mapping_filter.csv: Transcript stable ID version,Gene name,Human protein or transcript stable ID,Human gene name, TPM
+4. mapping_aggregated.csv: Human gene name,aggregated Transcript stable ID version, aggregated TPM. 
