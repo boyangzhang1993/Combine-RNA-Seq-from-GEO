@@ -3,6 +3,9 @@ import re
 import tarfile
 from pathlib import Path
 
+import numpy as np
+import pandas as pd
+
 import requests
 
 
@@ -54,3 +57,11 @@ def download_and_decompress(rna_file_path: Path, download_url: str) -> None:
     with tarfile.open(download_file, 'r') as tar:
         tar.extractall(path=rna_path)
     print("Decompression complete.")
+
+
+def custom_aggregator(series):
+    # If the series contains numeric data
+    if np.issubdtype(series.dtype, np.number):
+        return series.sum()
+    # Default case, for other data types
+    return ', '.join(series)

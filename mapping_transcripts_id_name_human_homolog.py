@@ -9,7 +9,7 @@ from utility import custom_aggregator
 
 
 # Path for files
-BIOMART_PATH = Path("./biomart_mapping/mart_human.txt.gz")
+BIOMART_PATH = Path("./mapping/biomart_results/mart_human.txt.gz")
 TRANSCRIPT_PATH = Path(f"./{TRANSCRIPT_OUTPUT}")
 MAPPING_OUT = "merged_output"
 # Constants for accessing column names
