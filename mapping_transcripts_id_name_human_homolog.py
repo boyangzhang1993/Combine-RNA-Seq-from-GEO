@@ -56,9 +56,12 @@ with tempfile.TemporaryDirectory() as temp_dir:
     if aggregated_df[STABLE_ID_VERSION].to_string() != aggregated_df[ID_TRANSCRIPT].to_string():
         raise ValueError
     
-    columns_keep = [HUMAN_GENE_NAME, STABLE_ID_VERSION]
-    columns_keep.extend([col for col in aggregated_df.columns if col.startswith('GSM')])
-    # print(merged_df.head())
-    merged_df.to_csv(f"./biomart_mapping/{MAPPING_OUT}.csv", index=False)
-    filtered_df.to_csv(f"./biomart_mapping/{MAPPING_OUT+'_filtered'}.csv", index=False)
-    aggregated_df[columns_keep].to_csv(f"./biomart_mapping/{MAPPING_OUT+'_filtered_aggregated'}.csv", index=False)
+    cols_keep_aggregated = [HUMAN_GENE_NAME, STABLE_ID_VERSION]
+    cols_keep_aggregated.extend([col for col in aggregated_df.columns if col.startswith('GSM')])
+
+    cols_keep_filter = [STABLE_ID_VERSION, 'Gene name', 'Human protein or transcript stable ID', HUMAN_GENE_NAME, ]
+    cols_keep_filter.extend([col for col in aggregated_df.columns if col.startswith('GSM')])
+
+    merged_df.to_csv(f"./{MAPPING_OUT}.csv", index=False)
+    filtered_df[cols_keep_filter].to_csv(f"./{MAPPING_OUT+'_filtered'}.csv", index=False)
+    aggregated_df[cols_keep_aggregated].to_csv(f"./{MAPPING_OUT + '_filtered_aggregated'}.csv", index=False)
